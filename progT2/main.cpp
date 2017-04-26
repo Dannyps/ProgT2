@@ -32,11 +32,7 @@ int main(){
 			vLines.push_back(Line(Slines));
 		lines.close();
 	}
-	cout << "Drivers read: " << vDrivers.size() << endl;
-	for (int i = 0; i < vDrivers.size();i++) {
-		cout << endl << vDrivers[i];
-	}
-	exit(-1);
+
 	Menu menu("Semprarrolar", NULL, NULL, 0);
 	Menu* menu_gerirlinhas = menu.addOption("Gerir Linhas", '1', NULL);
 	Menu* menu_gerircondutores = menu.addOption("Gerir Condutores", '2', NULL);

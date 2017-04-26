@@ -23,4 +23,13 @@ class Line{
   // set methods
   // other methods
 
+
+  // Operators (for debugging)
+  friend ostream& operator<< (ostream& os, const Line& d)
+  {
+	  os << d.id << ": " << d.getBusStops().back();
+	  return os;
+  }
+
+
 };

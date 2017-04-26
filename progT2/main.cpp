@@ -5,9 +5,30 @@
 #include "Driver.h"
 #include "Line.h"
 #include "Shift.h"
+#include <fstream>
+#include <vector>
 
+using namespace std;
 
 int main(){
+	ifstream drivers, lines;
+	string Sdrivers, Slines;
+	vector<Driver> Vdrivers;
+	vector<Line> Vlines;
+	drivers.open("condutores.txt");
+	lines.open("linhas.txt");
+
+	while (getline(drivers, Sdrivers))
+		Vdrivers.push_back(Driver(Sdrivers));
+
+	while (getline(drivers, Slines))
+		Vlines.push_back(Line(Slines));
+
+	drivers.close();
+	lines.close();
+
+
+
 	Menu menu("Semprarrolar", NULL, NULL, 0);
 	Menu* menu_gerirlinhas = menu.addOption("Gerir Linhas", '1', NULL);
 	Menu* menu_gerircondutores = menu.addOption("Gerir Condutores", '2', NULL);

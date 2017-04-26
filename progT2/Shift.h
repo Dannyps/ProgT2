@@ -23,7 +23,7 @@ class Shift{
   unsigned int getStartTime() const;
   unsigned int getEndTime() const;
 
-  //  set methods
+  // set methods
   unsigned int setBusLineId(unsigned int);
   unsigned int setDriverId(unsigned int);
   unsigned int setBusOrderNumber(unsigned int);

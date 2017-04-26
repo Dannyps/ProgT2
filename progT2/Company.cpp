@@ -1,0 +1,23 @@
+#include "Company.h"
+
+
+Empresa::Empresa(string nome, string fichCondutores, string fichLinhas){
+  
+}
+
+////////////////////////////////
+// metodos get
+///////////////////////////////
+string Empresa::getNome() const{
+  return this->nome;
+}
+
+//////////////////////////////
+// metodos set
+/////////////////////////////
+
+////////////////////////////
+// outros metodos
+///////////////////////////
+void Empresa::distribuiServico(){
+}

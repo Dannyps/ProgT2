@@ -15,6 +15,7 @@ Line::Line(string textLine){
 		fim = linhaFicheiro.find(',');
 		std::string stopName = linhaFicheiro.substr(0, fim);
 		this->busStopList.push_back(stopName);
+		this->timesList.push_back(0);
 		linhaFicheiro = linhaFicheiro.substr(fim + 2);
 		if (fim == string::npos)
 			break;

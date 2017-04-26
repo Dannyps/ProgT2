@@ -26,6 +26,16 @@ class Driver{
 	unsigned int getMaxWeekWorkingTime() const;
 	unsigned int getMinRestTime() const;
 	vector<Shift> getShifts() const;
+	
+	
+	
+	
+	// Operators (for debugging)
+	friend ostream& operator<< (ostream& os, const Driver& d)
+	{
+		os << d.id << ": " << d.name;
+		return os;
+	}
 
   // outher methods
 

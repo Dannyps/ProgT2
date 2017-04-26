@@ -11,23 +11,26 @@
 using namespace std;
 
 int main(){
-	ifstream drivers, lines;
-	string Sdrivers, Slines;
-	vector<Driver> Vdrivers;
-	vector<Line> Vlines;
-	drivers.open("condutores.txt");
-	lines.open("linhas.txt");
-
-	while (getline(drivers, Sdrivers))
-		Vdrivers.push_back(Driver(Sdrivers));
-
-	while (getline(drivers, Slines))
-		Vlines.push_back(Line(Slines));
-
-	drivers.close();
-	lines.close();
 
 
+	vector<Driver> vDrivers;
+	vector<Line> vLines;
+	{ // Reading drivers
+		ifstream drivers;
+		string Sdrivers;
+		drivers.open("condutores.txt");
+		while (getline(drivers, Sdrivers))
+			vDrivers.push_back(Driver(Sdrivers));
+		drivers.close();
+	}
+	{ // Reading lines
+		ifstream lines;
+		string Slines;
+		lines.open("linhas.txt");
+		while (getline(lines, Slines))
+			vLines.push_back(Line(Slines));
+		lines.close();
+	}
 
 	Menu menu("Semprarrolar", NULL, NULL, 0);
 	Menu* menu_gerirlinhas = menu.addOption("Gerir Linhas", '1', NULL);

@@ -1,9 +1,17 @@
 #include "Driver.h"
+#include "Utility.h"
+#include <sstream>
 
 Driver::Driver(string textLine){
-
-  // INITIALISATION CODE GOES IN HERE
-  
+	char sep;
+	istringstream iss(textLine);
+	iss >> this->id;
+	iss >> sep;
+	string linhaFicheiro;
+	getline(iss, linhaFicheiro, ';');
+	linhaFicheiro = trim(linhaFicheiro); //remover espaços antes e depois.
+	this->name = linhaFicheiro;
+	iss >> this->maxHours >> sep >> this->maxWeekWorkingTime >> sep >> this->minRestTime;  
 }
 
 //////////////

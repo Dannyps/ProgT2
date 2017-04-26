@@ -13,6 +13,7 @@ class Line{
   unsigned int id;
   vector<string> busStopList;
   vector<int> timesList;
+  unsigned int frequency;
  public:
   Line(string textLine);
   // metodos get

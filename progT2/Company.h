@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <fstream>
 
 #include "Line.h"
 #include "Driver.h"

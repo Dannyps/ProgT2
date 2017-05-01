@@ -12,28 +12,18 @@ using namespace std;
 
 int main(){
 
+	string a = "teste";
 
-	vector<Driver> vDrivers;
-	vector<Line> vLines;
+	cout << "npos: " << string::npos << endl;
+	cout << "fres: " << a.find(',') << endl;
+	cout << (string::npos==a.find(',')) << endl;
 
-	{ // Reading drivers
-		ifstream drivers;
-		string Sdrivers;
-		drivers.open("condutores.txt");
-		while (getline(drivers, Sdrivers))
-			vDrivers.push_back(Driver(Sdrivers));
-		drivers.close();
-	}
-	{ // Reading lines
-		ifstream lines;
-		string Slines;
-		lines.open("linhas.txt");
-		while (getline(lines, Slines))
-			vLines.push_back(Line(Slines));
-		lines.close();
-	}
+//	exit(-1);
 
-	Menu menu("Semprarrolar", NULL, NULL, 0);
+
+	Empresa emp = Empresa("Semprarrolar", "condutores.txt", "linhas.txt");
+
+	Menu menu(emp.getNome(), NULL, NULL, 0);
 	Menu* menu_gerirlinhas = menu.addOption("Gerir Linhas", '1', NULL);
 	Menu* menu_gerircondutores = menu.addOption("Gerir Condutores", '2', NULL);
 

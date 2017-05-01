@@ -2,21 +2,23 @@
 #include <sstream>
 
 Line::Line(string textLine){
-	unsigned int inicio = 0, fim = 0;
+	cout << "got: " << textLine << endl << flush;
+	size_t inicio = 0, fim = 0;
 	char sep;
 	istringstream iss(textLine);
 	iss >> this->id >> sep >> this->frequency >> sep;
-	std::string linhaFicheiro;
+	string linhaFicheiro;
 	getline(iss, linhaFicheiro, ';');
 
 	linhaFicheiro = linhaFicheiro.substr(1);
 	inicio = 1;
 	while (1) {
 		fim = linhaFicheiro.find(',');
-		std::string stopName = linhaFicheiro.substr(0, fim);
+		string stopName = linhaFicheiro.substr(0, fim);
 		this->busStopList.push_back(stopName);
 		this->timesList.push_back(0);
 		linhaFicheiro = linhaFicheiro.substr(fim + 2);
+		cout << fim << " == " << string::npos << ": " << (fim == string::npos) << endl << flush;
 		if (fim == string::npos)
 			break;
 	}

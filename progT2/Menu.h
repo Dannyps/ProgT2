@@ -53,11 +53,13 @@ struct Menu {
 		//cout << "Adding option to " << this->name << "\nOption name: " << n << ".\n";
 		if (oc == 'x') {
 			cerr << "[MENU] A opcao a adicionar: \"" << n << "\" utiliza um carater reservado." << endl;
+			exit(-1);
 			return NULL;
 		}
 		for (unsigned int i = 0; i < children.size(); i++) {
 			if (children[i]->opt_char == oc) {
 				cerr << "[MENU] A opcao a adicionar: \"" << n << "\" utiliza um carater ja' utilizado." << endl;
+				exit(-1);
 				return NULL;
 			}
 		}

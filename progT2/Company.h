@@ -41,10 +41,15 @@ class Empresa{
 	vector<Line> getLinesByStop(string Paragem);
 	void distribuiServico(); // funcao que implementa a afectacao de servico
 
+	Line* getLineByID(int id);
+	Driver* getDriverByID(int id);
+
 	void AlterLines();
-
-
 	void imprimeLinhas_m();
+
+	// io methods
+	void saveChanges(string fichCondutores, string fichLinhas);
+	void loadFromDisk(string fichCondutores, string fichLinhas);
 
 	// menu interface
 	void const menu_interface(int mio);

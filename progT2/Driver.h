@@ -28,9 +28,8 @@ class Driver{
 	unsigned int getMinRestTime() const;
 	vector<Shift> getShifts() const;
 	
-	// other moethods
+	// other methods
 
-	//Driver* getDriverById(int id);
 	void print();
 
 

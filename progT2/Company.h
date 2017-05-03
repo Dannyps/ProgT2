@@ -23,5 +23,6 @@ class Empresa{
 	string getNome() const;
 	// metodos set
 	// outros metodos
+	vector<Line> getLinesByStop(string Paragem);
 	void distribuiServico(); // funcao que implementa a afectacao de servico
 };

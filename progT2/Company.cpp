@@ -1,8 +1,8 @@
 #include "Company.h"
 
 
-Empresa::Empresa(string nome, string fichCondutores, string fichLinhas){
-	
+Empresa::Empresa(string nome, string fichCondutores, string fichLinhas) {
+
 	cout << "reading drivers\n" << flush;
 	{ // Reading drivers
 		ifstream drivers;
@@ -27,13 +27,27 @@ Empresa::Empresa(string nome, string fichCondutores, string fichLinhas){
 ////////////////////////////////
 // metodos get
 ///////////////////////////////
-string Empresa::getNome() const{
-  return this->nome;
+string Empresa::getNome() const {
+	return this->nome;
 }
 
 //////////////////////////////
 // metodos set
 /////////////////////////////
+
+vector<Line> Empresa::getLinesByStop(string Paragem)
+{
+	vector<Line> res;
+
+	for (unsigned int i = 0; i < linhas.size(); i++) {
+		for (unsigned int j = 0; j < linhas[i].getBusStops().size(); j++){
+			if (linhas[i].getBusStops().at(j) == Paragem)
+				res.push_back(linhas[i]);
+		}
+	}
+
+	return res;
+}
 
 ////////////////////////////
 // outros metodos

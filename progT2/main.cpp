@@ -12,17 +12,14 @@ using namespace std;
 
 int main(){
 
-	string a = "teste";
-
-	cout << "npos: " << string::npos << endl;
-	cout << "fres: " << a.find(',') << endl;
-	cout << (string::npos==a.find(',')) << endl;
-
-//	exit(-1);
-
 
 	Empresa emp = Empresa("Semprarrolar", "condutores.txt", "linhas.txt");
 
+	vector<Line> res= emp.getLinesByStop("Sete Bicas");
+	for (unsigned i = 0; i < res.size(); i++) {
+		cout << res[i] << endl;
+	}
+	exit(-1);
 	Menu menu(emp.getNome(), NULL, NULL, 0);
 	Menu* menu_gerirlinhas = menu.addOption("Gerir Linhas", '1', NULL);
 	Menu* menu_gerircondutores = menu.addOption("Gerir Condutores", '2', NULL);

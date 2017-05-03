@@ -44,6 +44,7 @@ class Empresa{
 	Line* getLineByID(unsigned id);
 	Driver* getDriverByID(unsigned id);
 
+	void AlterDrivers();
 	void AlterLines();
 	void imprimeLinhas_m();
 

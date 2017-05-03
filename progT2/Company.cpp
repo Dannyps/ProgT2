@@ -80,7 +80,6 @@ void Empresa::AlterLines() {
 	cout << "Qual o ID da linha? ";
 	
 	unsigned int id, NId;
-	bool test = false, teste2 = true;
 	cin >> id;
 	Line* linha = getLineByID(id);
 	if (linha == nullptr)
@@ -88,19 +87,38 @@ void Empresa::AlterLines() {
 		cout << "Esse id nao corresponde a nenhuma linha";
 		return;
 	}
-	
-	test = true;
 	cout << "Qual o novo id da linha? ";
 	cin >> NId;
 	if (getLineByID(NId) != nullptr)
 	{
 		cout << "Esse ID ja existe!";
-		teste2 = false;
 		return;
 	}
 	
 	linha->AlterLine(NId);
 }
+
+void Empresa::AlterDrivers() {
+	int id, NId;
+	cout << "Qual o Id do condutor que quer alterar? ";
+	cin >> id;
+	Driver* condutor = getDriverByID(id);
+	if (condutor == nullptr)
+	{
+		cout << "Esse id nao corresponde a nenhum condutor";
+		return;
+	}
+	cout << "Qual o novo nome [" ;
+	cin >> NId;
+	if (getLineByID(NId) != nullptr)
+	{
+		cout << "Esse ID ja existe!";
+		return;
+	}
+
+	linha->AlterLine(NId);
+}
+
 
 ////////////////////////////
 // outros metodos

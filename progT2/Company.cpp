@@ -78,37 +78,29 @@ Driver * Empresa::getDriverByID(int id)
 
 void Empresa::AlterLines() {
 	cout << "Qual o ID da linha? ";
+	
+	unsigned int id, NId;
+	bool test = false, teste2 = true;
+	cin >> id;
+	Line* linha = getLineByID(id);
+	if (linha == nullptr)
 	{
-		unsigned int id, NId;
-		bool test = false, teste2 = true;
-		cin >> id;
-		for (unsigned int i = 0; i < linhas.size(); i++)
-		{
-			if (linhas[i].getId() == id) {
-				test = true;
-				cout << "Qual o novo id da linha? ";
-				cin >> NId;
-				for (unsigned int b = 0; b < linhas.size(); b++) {
-					if (NId == linhas[b].getId())
-					{
-						cout << "Esse ID ja existe!";
-						teste2 = false;
-						break;
-					}
-				}
-				if (teste2)
-				{
-					linhas[i].AlterLine(NId);
-					break;
-				}
-				break;
-			}
-		}
-		if (!test)
-		{
-			cout << "Esse id nao corresponde a nenhuma linha";
-		}
+		cout << "Esse id nao corresponde a nenhuma linha";
+		return;
 	}
+	
+	test = true;
+	cout << "Qual o novo id da linha? ";
+	cin >> NId;
+	if (getLineByID(NId) != nullptr)
+	{
+		cout << "Esse ID ja existe!";
+		teste2 = false;
+		return;
+	}
+	
+	linha->AlterLine(NId);
+	
 	cin.clear();
 	cin.ignore(1000, '\n');
 }

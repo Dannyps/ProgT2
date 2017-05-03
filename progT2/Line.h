@@ -21,6 +21,7 @@ class Line{
   vector<string> getBusStops() const;
   vector<int> getTimings() const;
   // set methods
+ void AlterLine(int id);
   // other methods
 
 

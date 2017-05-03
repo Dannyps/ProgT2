@@ -40,7 +40,7 @@ vector<Line> Empresa::getLinesByStop(string Paragem)
 	vector<Line> res;
 
 	for (unsigned int i = 0; i < linhas.size(); i++) {
-		for (unsigned int j = 0; j < linhas[i].getBusStops().size(); j++){
+		for (unsigned int j = 0; j < linhas[i].getBusStops().size(); j++) {
 			if (linhas[i].getBusStops().at(j) == Paragem)
 				res.push_back(linhas[i]);
 		}
@@ -52,5 +52,30 @@ vector<Line> Empresa::getLinesByStop(string Paragem)
 ////////////////////////////
 // outros metodos
 ///////////////////////////
-void Empresa::distribuiServico(){
+void Empresa::distribuiServico() {
+}
+
+void Empresa::AlterLines() {
+	cout << "Qual o ID da linha?";
+	{
+		unsigned int id, NId;
+		bool test = false;
+		cin >> id;
+		for (unsigned int i = 0; i < linhas.size(); i++)
+		{
+			if (linhas[i].getId() == id)
+			{
+				test = true;
+				cout << "Qual o novo id da linha?";
+				cin >> NId;
+				linhas[i].AlterLine(NId);
+				break;
+			}
+		}
+
+		if (!test)
+		{
+			cout << "Esse id nao corresponde a nenhuma linha";
+		}
+	}
 }

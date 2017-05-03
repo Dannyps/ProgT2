@@ -35,6 +35,7 @@ Line::Line(string textLine){
 // get methods
 ////////////////
 
+
 unsigned int Line::getId() const{
   return id;
 }
@@ -45,4 +46,8 @@ vector<string> Line::getBusStops() const{
 
 vector<int> Line::getTimings() const{
   return timesList;
+}
+
+void Line::AlterLine(int id) {
+	this->id = id;
 }

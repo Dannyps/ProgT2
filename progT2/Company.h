@@ -25,4 +25,5 @@ class Empresa{
 	// outros metodos
 	vector<Line> getLinesByStop(string Paragem);
 	void distribuiServico(); // funcao que implementa a afectacao de servico
+	void AlterLines();
 };

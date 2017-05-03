@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 #include "Shift.h"
 
@@ -27,7 +28,12 @@ class Driver{
 	unsigned int getMinRestTime() const;
 	vector<Shift> getShifts() const;
 	
-	
+	// other moethods
+
+	//Driver* getDriverById(int id);
+	void print();
+
+
 	
 	
 	// Operators (for debugging)

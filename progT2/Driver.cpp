@@ -41,3 +41,13 @@ unsigned int Driver::getMinRestTime() const{
 vector<Shift> Driver::getShifts() const{
   return shifts;
 }
+
+void Driver::print()
+{
+	cout << setw(2) << this->id << ": " << this->name << endl;
+	cout << "\t Tempo maximo por semana: " << this->maxWeekWorkingTime<< endl;
+	cout << "\t Tempo minimo de descanso: " << this->minRestTime << endl;
+	cout << "\t Tempo maximo por turno: " << this->maxHours << endl;
+	return;
+}
+

@@ -22,7 +22,7 @@ class Line{
   vector<int> getTimings() const;
   // set methods
   // other methods
-
+  void print();
 
   // Operators (for debugging)
   friend ostream& operator<< (ostream& os, const Line& d)

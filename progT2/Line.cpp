@@ -46,3 +46,14 @@ vector<string> Line::getBusStops() const{
 vector<int> Line::getTimings() const{
   return timesList;
 }
+
+void Line::print()
+{
+	cout << "==== " << this->id << " ====" << endl;
+	cout << "Tempo \t| Nome" << endl;
+	cout << "--------|------------------" << endl;
+	for (unsigned int j = 0; j < this->getBusStops().size(); j++) {
+		cout << this->getTimings().at(j) << "\t| " << this->getBusStops().at(j) << endl;
+	}
+	return;
+}

@@ -10,6 +10,20 @@
 #include "Driver.h"
 
 
+enum mio // menu interface options
+{
+	SAVE_ALL,
+	LOAD_FROM_DISK,
+	LINE_SHOW,
+	LINE_ADD,
+	LINE_EDIT,
+	LINE_REMOVE,
+	DRIVER_SHOW,
+	DRIVER_ADD,
+	DRIVER_EDIT,
+	DRIVER_REMOVE
+};
+
 using namespace std;
 
 class Empresa{
@@ -25,4 +39,9 @@ class Empresa{
 	// outros metodos
 	vector<Line> getLinesByStop(string Paragem);
 	void distribuiServico(); // funcao que implementa a afectacao de servico
+
+	void imprimeLinhas_m();
+
+	// menu interface
+	void const menu_interface(int mio);
 };

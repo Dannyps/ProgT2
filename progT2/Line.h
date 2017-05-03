@@ -23,7 +23,7 @@ class Line{
   // set methods
  void AlterLine(int id);
   // other methods
-
+  void print();
 
   // Operators (for debugging)
   friend ostream& operator<< (ostream& os, const Line& d)

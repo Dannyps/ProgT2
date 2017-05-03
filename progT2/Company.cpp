@@ -49,6 +49,7 @@ vector<Line> Empresa::getLinesByStop(string Paragem)
 	return res;
 }
 
+<<<<<<< HEAD
 ////////////////////////////
 // outros metodos
 ///////////////////////////
@@ -79,3 +80,60 @@ void Empresa::AlterLines() {
 		}
 	}
 }
+=======
+////////////////////////////
+// outros metodos
+///////////////////////////
+void Empresa::distribuiServico(){
+}
+
+void Empresa::imprimeLinhas_m()
+{
+	cout << "Linhas disponiveis: ";
+	for (unsigned int i = 0; i < linhas.size(); i++) {
+		cout << linhas[i].getId() << " ";
+	}
+	cout << endl;
+
+	cout << "Indique a linha a imprimir (* imprime todas as linhas): ";
+	string opt;
+	cin >> opt;
+	cin.ignore(100, '\n');
+	if (opt == "*") {
+		for (unsigned int i = 0; i < linhas.size(); i++) {
+			linhas[i].print();
+			cout << endl;
+		}
+		return;
+	}
+	else {
+		for (unsigned int i = 0; i < linhas.size(); i++) {
+			if (stoi(opt) == linhas[i].getId()) {
+				linhas[i].print();
+				cout << endl;
+				return;
+			}
+		}
+	}
+
+	cout << "Linha nao encontrada!\n";
+	return;
+}
+
+void const Empresa::menu_interface(int mio)
+{
+	switch (mio) {
+	case SAVE_ALL:
+		//todo
+		break;
+	case LOAD_FROM_DISK:
+		//todo
+		break;
+	case LINE_SHOW:
+		imprimeLinhas_m();
+		break;
+	}
+		
+	return;
+}
+>>>>>>> origin/master

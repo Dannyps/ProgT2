@@ -100,9 +100,6 @@ void Empresa::AlterLines() {
 	}
 	
 	linha->AlterLine(NId);
-	
-	cin.clear();
-	cin.ignore(1000, '\n');
 }
 
 ////////////////////////////
@@ -156,6 +153,7 @@ void const Empresa::menu_interface(int mio)
 		break;
 	case LINE_EDIT:
 		AlterLines();
+		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
 	}
 		
 	return;

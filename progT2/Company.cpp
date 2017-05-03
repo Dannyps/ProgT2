@@ -49,7 +49,7 @@ vector<Line> Empresa::getLinesByStop(string Paragem)
 	return res;
 }
 
-<<<<<<< HEAD
+
 ////////////////////////////
 // outros metodos
 ///////////////////////////
@@ -80,12 +80,10 @@ void Empresa::AlterLines() {
 		}
 	}
 }
-=======
+
 ////////////////////////////
 // outros metodos
 ///////////////////////////
-void Empresa::distribuiServico(){
-}
 
 void Empresa::imprimeLinhas_m()
 {
@@ -136,4 +134,4 @@ void const Empresa::menu_interface(int mio)
 		
 	return;
 }
->>>>>>> origin/master
+

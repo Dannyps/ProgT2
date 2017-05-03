@@ -39,13 +39,13 @@ class Empresa{
 	// outros metodos
 	vector<Line> getLinesByStop(string Paragem);
 	void distribuiServico(); // funcao que implementa a afectacao de servico
-<<<<<<< HEAD
+
 	void AlterLines();
-=======
+
 
 	void imprimeLinhas_m();
 
 	// menu interface
 	void const menu_interface(int mio);
->>>>>>> origin/master
+
 };

@@ -15,11 +15,6 @@ int main(){
 
 	Empresa emp = Empresa("Semprarrolar", "condutores.txt", "linhas.txt");
 
-	vector<Line> res= emp.getLinesByStop("Sete Bicas");
-	for (unsigned i = 0; i < res.size(); i++) {
-		cout << res[i] << endl;
-	}
-	exit(-1);
 	Menu menu(emp.getNome(), NULL, NULL, 0);
 	Menu* menu_gerirlinhas = menu.addOption("Gerir Linhas", '1', NULL);
 	Menu* menu_gerircondutores = menu.addOption("Gerir Condutores", '2', NULL);

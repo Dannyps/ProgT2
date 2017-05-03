@@ -35,6 +35,7 @@ class Empresa{
 		Empresa(string nome, string fichCondutores, string fichLinhas);
 	// metodos get
 	string getNome() const;
+	Line& getLineById(unsigned int id);
 	// metodos set
 	// outros metodos
 	vector<Line> getLinesByStop(string Paragem);

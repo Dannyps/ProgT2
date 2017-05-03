@@ -130,8 +130,19 @@ void const Empresa::menu_interface(int mio)
 	case LINE_SHOW:
 		imprimeLinhas_m();
 		break;
+	case LINE_EDIT:
+		AlterLines();
 	}
 		
 	return;
 }
-
+
+Line & Empresa::getLineById(unsigned int id){	
+	for (unsigned i = 0; this->linhas.size(); i++) {
+		if (this->linhas.at(i).getId() == id) {
+			return this->linhas.at(i);
+		}
+	}
+
+	throw -1;
+}

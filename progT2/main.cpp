@@ -28,7 +28,7 @@ int main(){
 
 	menu_gerirlinhas->addOption("Mostrar Linha", 'm', menu_interface, LINE_SHOW);
 	menu_gerirlinhas->addOption("Adicionar Linha", 'a', menu_interface, LINE_ADD);
-	menu_gerirlinhas->addOption("Adicionar Linha", 'a', menu_interface, LINE_ADD);
+	menu_gerirlinhas->addOption("Editar Linha", 'e', menu_interface, LINE_EDIT);
 	menu_gerirlinhas->addOption("Remover Linha", 'r', menu_interface, LINE_REMOVE);
 
 

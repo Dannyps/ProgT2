@@ -56,20 +56,20 @@ vector<Line> Empresa::getLinesByStop(string Paragem)
 void Empresa::distribuiServico() {
 }
 
-Line * Empresa::getLineByID(int id)
+Line * Empresa::getLineByID(unsigned id)
 {
 	for (unsigned i = 0; i < linhas.size(); i++) {
-		if (linhas[i].getId == id) {
+		if (linhas[i].getId() == id) {
 			return &linhas[i];
 		}
 	}
 	return nullptr;
 }
 
-Driver * Empresa::getDriverByID(int id)
+Driver * Empresa::getDriverByID(unsigned id)
 {
 	for (unsigned i = 0; i < condutores.size(); i++) {
-		if (condutores[i].getId == id) {
+		if (condutores[i].getId() == id) {
 			return &condutores[i];
 		}
 	}

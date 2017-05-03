@@ -41,8 +41,8 @@ class Empresa{
 	vector<Line> getLinesByStop(string Paragem);
 	void distribuiServico(); // funcao que implementa a afectacao de servico
 
-	Line* getLineByID(int id);
-	Driver* getDriverByID(int id);
+	Line* getLineByID(unsigned id);
+	Driver* getDriverByID(unsigned id);
 
 	void AlterLines();
 	void imprimeLinhas_m();

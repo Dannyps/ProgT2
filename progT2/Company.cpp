@@ -108,15 +108,15 @@ void Empresa::AlterDrivers() {
 		cout << "Esse id nao corresponde a nenhum condutor";
 		return;
 	}
-	cout << "Qual o novo nome [" ;
+	cout << "Qual o novo nome [" << getNome() << "]? " ;
 	cin >> NId;
-	if (getLineByID(NId) != nullptr)
+	if (getDriverByID(NId) != nullptr)
 	{
 		cout << "Esse ID ja existe!";
 		return;
 	}
-
-	linha->AlterLine(NId);
+	condutor->AlterIdCondutor(NId);
+	return;                                                    // Apenas altera o ID
 }
 
 

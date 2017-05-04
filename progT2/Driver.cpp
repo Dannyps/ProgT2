@@ -42,6 +42,13 @@ vector<Shift> Driver::getShifts() const{
   return shifts;
 }
 
+
+void Driver::AlterIdCondutor(int NId) {
+	this->id = NId;
+
+}
+
+
 void Driver::print()
 {
 	cout << setw(2) << this->id << ": " << this->name << endl;

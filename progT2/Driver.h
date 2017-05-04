@@ -27,7 +27,7 @@ class Driver{
 	unsigned int getMaxWeekWorkingTime() const;
 	unsigned int getMinRestTime() const;
 	vector<Shift> getShifts() const;
-	
+	void AlterIdCondutor(int);
 	// other methods
 
 	void print();

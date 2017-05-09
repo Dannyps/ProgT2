@@ -25,6 +25,7 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Shift.h" />
+    <ClInclude Include="time_dh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bus.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Shift.cpp" />
+    <ClCompile Include="time_dh.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7FEAA460-E68E-4A21-AB92-43C9BE97CC88}</ProjectGuid>

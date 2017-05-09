@@ -28,6 +28,7 @@ using namespace std;
 
 class Empresa{
  private:
+
 	string nome;
 	string fichCondutores, fichLinhas;
 	vector<Driver> condutores;

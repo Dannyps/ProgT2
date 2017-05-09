@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "time_dh.h"
 
 
 
@@ -14,6 +15,7 @@ class Line{
   vector<string> busStopList;
   vector<int> timesList;
   unsigned int frequency;
+  int nAutocarrosNecessarios=-1;
  public:
   Line(string textLine);
   // metodos get
@@ -25,6 +27,8 @@ class Line{
   void AlterLine(int id);
   // other methods
   void print();
+  int calcTempoIdaEVolta();
+  vector <time_dh> gerarHorario(time_dh begin, time_dh end);
 
   // Operators (for debugging)
   friend ostream& operator<< (ostream& os, const Line& d)

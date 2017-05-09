@@ -1,5 +1,6 @@
 #include "Line.h"
 #include <sstream>
+#include "time_dh.h"
 
 Line::Line(string textLine){
 	//cout << "got: " << textLine << endl << flush;
@@ -29,6 +30,15 @@ Line::Line(string textLine){
 		if (i != this->busStopList.size() - 1)
 			iss >> sep;
 	}
+
+
+	// Everything loaded.
+
+	cout << this->id << ":\n\tTempo de ida e volta: " << calcTempoIdaEVolta() << endl;
+
+	this->nAutocarrosNecessarios = (int)((double)this->calcTempoIdaEVolta() / getFrequency() + 1.0);
+
+	cout << "\tNumero de autocarros necessarios: " << this->nAutocarrosNecessarios<<endl << endl;
 }
 
 ////////////////
@@ -62,6 +72,32 @@ void Line::print()
 		cout << this->getTimings().at(j) << "\t| " << this->getBusStops().at(j) << endl;
 	}
 	return;
+}
+
+int Line::calcTempoIdaEVolta()
+{
+	int res = 0;
+	for (unsigned i = 0; i < this->busStopList.size(); i++) {
+		res += this->timesList.at(i) + this->timesList.at(i);
+		//cout << "a somar " << this->timesList.at(i) << endl;
+	}
+
+	return res;
+}
+
+vector<time_dh> Line::gerarHorario(time_dh begin, time_dh end)
+{
+	vector<time_dh> res;
+	
+	time_dh curr=begin;
+	cout << "Quero gerar um horario para uma linha que comeca as " << begin << " e acaba as " << end << ".\n";
+	cout << "+freq=" << begin + time_dh(0, this->frequency) << endl;
+	/*while (curr < end) {
+
+	}*/
+
+
+	return res;
 }
 
 void Line::AlterLine(int id) {

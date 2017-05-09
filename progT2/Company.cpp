@@ -6,6 +6,11 @@ Empresa::Empresa(string nome, string fichCondutores, string fichLinhas) {
 	this->fichCondutores = fichCondutores;
 	this->fichLinhas = fichLinhas;
 	this->loadFromDisk(fichCondutores, fichLinhas);
+
+	for each (Line l in linhas)
+	{
+		l.gerarHorario(time_dh(06,00), time_dh(23,30));
+	}
 }
 
 ////////////////////////////////

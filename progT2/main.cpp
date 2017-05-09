@@ -19,6 +19,8 @@ int main(){
 
 	void const (*mi)(int a)=menu_interface; /// define mi
 
+
+	exit(-1);
 	Menu menu(emp.getNome(), NULL, NULL, 0);
 	Menu* menu_gerirlinhas =		menu.addOption("Gerir Linhas", '1', NULL);
 	Menu* menu_gerircondutores =	menu.addOption("Gerir Condutores", '2', NULL);

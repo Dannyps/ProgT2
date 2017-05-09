@@ -1,4 +1,0 @@
-1 ; Antonio Manuel ; 4 ; 36 ; 2
-3 ; Joaquim Belmiro ; 8 ; 48 ; 4
-6 ; Esteves dos Santos ; 4 ; 68 ; 3
-5 ; Daniel Silva ; 6 ; 60 ; 3

@@ -17,6 +17,7 @@ class Line{
  public:
   Line(string textLine);
   // metodos get
+  unsigned int getFrequency();
   unsigned int getId() const;
   vector<string> getBusStops() const;
   vector<int> getTimings() const;

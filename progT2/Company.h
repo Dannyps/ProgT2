@@ -29,6 +29,7 @@ using namespace std;
 class Empresa{
  private:
 	string nome;
+	string fichCondutores, fichLinhas;
 	vector<Driver> condutores;
 	vector<Line> linhas;
  public:
@@ -49,8 +50,8 @@ class Empresa{
 	void imprimeLinhas_m();
 
 	// io methods
-	void saveChanges(string fichCondutores, string fichLinhas);
-	void loadFromDisk(string fichCondutores, string fichLinhas);
+	int saveChanges(string fichCondutores, string fichLinhas);
+	int loadFromDisk(string fichCondutores, string fichLinhas);
 
 	// menu interface
 	void const menu_interface(int mio);

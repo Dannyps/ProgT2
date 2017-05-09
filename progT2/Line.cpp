@@ -36,6 +36,11 @@ Line::Line(string textLine){
 ////////////////
 
 
+unsigned int Line::getFrequency()
+{
+	return this->frequency;
+}
+
 unsigned int Line::getId() const{
   return id;
 }

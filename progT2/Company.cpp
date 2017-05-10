@@ -73,7 +73,7 @@ void Empresa::AlterLines() {
 	Line* linha = getLineByID(id);
 	if (linha == nullptr)
 	{
-		cout << "Esse id nao corresponde a nenhuma linha";
+		cout << "Esse id nao corresponde a nenhuma linha.";
 		return;
 	}
 	cout << "Qual o novo id da linha? ";
@@ -88,24 +88,53 @@ void Empresa::AlterLines() {
 }
 
 void Empresa::AlterDrivers() {
-	int id, NId;
+	int id, NId, NHorasDiarias, NHorasSemanais, NHorasPausa;
+	string NNome;
 	cout << "Qual o Id do condutor que quer alterar? ";
 	cin >> id;
 	Driver* condutor = getDriverByID(id);
 	if (condutor == nullptr)
 	{
-		cout << "Esse id nao corresponde a nenhum condutor";
+		cout << "Esse id nao corresponde a nenhum condutor.";
 		return;
 	}
-	cout << "Qual o novo nome [" << getNome() << "]? " ;
+	cout << "Qual o novo Id? ";
 	cin >> NId;
 	if (getDriverByID(NId) != nullptr)
 	{
 		cout << "Esse ID ja existe!";
 		return;
 	}
+	cout << "Qual o novo nome [" << getNome() << "]? " ;
+	cin >> NNome;
+	
+	                                                   
+	cout << "Qual o numero de horas que pode trabalhar por dia? ";
+	cin >> NHorasDiarias;
+	if (NHorasDiarias <= 0 || NHorasDiarias > 24 || cin.fail()) {
+		cout << "Nao e possivel, nao houve alteracoes.";
+		return;
+	}
+	cout << "Qual o numero maximo de horas semanais de trabalho? ";
+	cin >> NHorasSemanais;
+	if (NHorasSemanais <= 0 || NHorasSemanais > 168 || cin.fail())
+	{
+		cout << "Nao e possivel, nao houve alteracoes.";
+		return;
+	}
+	cout << "Quantas horas e que descanca entre turnos? ";
+	cin >> NHorasPausa;
+	if (cin.fail() || NHorasPausa <= 0)
+	{
+		cout << "Nao e possivel, nao houve alteracoes.";
+		return;
+	}
 	condutor->AlterIdCondutor(NId);
-	return;                                                    // Apenas altera o ID
+	condutor->AlterNameCondutor(NNome);
+	condutor->AlterHorasDiariasCondutor(NHorasDiarias);
+	condutor->AlterHorasSemanais(NHorasSemanais);
+	condutor->AlterHorasDescanso(NHorasPausa);
+	return;
 }
 
 

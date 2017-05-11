@@ -5,7 +5,6 @@
 #include <vector>
 #include <map>
 #include <fstream>
-
 #include "Line.h"
 #include "Driver.h"
 
@@ -21,7 +20,10 @@ enum mio // menu interface options
 	DRIVER_SHOW,
 	DRIVER_ADD,
 	DRIVER_EDIT,
-	DRIVER_REMOVE
+	DRIVER_REMOVE,
+	TIMETABLE_LINE_SHOW,
+	TIMETABLE_STOP_SHOW,
+	TIMETABLE_DRIVER_SHOW
 };
 
 using namespace std;
@@ -48,7 +50,10 @@ class Empresa{
 
 	void AlterDrivers();
 	void AlterLines();
+
+	// menu interface methods
 	void imprimeLinhas_m();
+	void mostraHorarioLinha_m();
 
 	// io methods
 	int saveChanges(string fichCondutores, string fichLinhas);

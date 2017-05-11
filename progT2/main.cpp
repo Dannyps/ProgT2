@@ -20,7 +20,7 @@ int main(){
 	void const (*mi)(int a)=menu_interface; /// define mi
 
 
-	exit(-1);
+	//exit(-1);
 	Menu menu(emp.getNome(), NULL, NULL, 0);
 	Menu* menu_gerirlinhas =		menu.addOption("Gerir Linhas", '1', NULL);
 	Menu* menu_gerircondutores =	menu.addOption("Gerir Condutores", '2', NULL);
@@ -43,9 +43,9 @@ int main(){
 	menu_gerircondutores->	addOption("Editar Condutor", 'e', mi, DRIVER_EDIT);
 	menu_gerircondutores->	addOption("Remover Condutor", 'r', mi, DRIVER_REMOVE);
 
-	menu_gerirhorarios	->	addOption("Ver horario por linha", 'l', mi, DRIVER_REMOVE);
-	menu_gerirhorarios	->	addOption("Ver horario por paragem", 'p', mi, DRIVER_REMOVE);
-	menu_gerirhorarios	->	addOption("Ver horario por condutor", 'c', mi, DRIVER_REMOVE);
+	menu_gerirhorarios	->	addOption("Ver horario por linha", 'l', mi, TIMETABLE_LINE_SHOW);
+	menu_gerirhorarios	->	addOption("Ver horario por paragem", 'p', mi, TIMETABLE_STOP_SHOW);
+	menu_gerirhorarios	->	addOption("Ver horario por condutor", 'c', mi, TIMETABLE_DRIVER_SHOW);
 
 
 	menu.print();

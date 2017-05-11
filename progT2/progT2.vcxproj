@@ -24,6 +24,7 @@
     <ClInclude Include="Driver.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Misc.h" />
     <ClInclude Include="Shift.h" />
     <ClInclude Include="time_dh.h" />
   </ItemGroup>

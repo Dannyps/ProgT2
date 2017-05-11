@@ -1,6 +1,6 @@
 #include "Line.h"
 #include <sstream>
-#include "time_dh.h"
+#include "Misc.h"
 
 Line::Line(string textLine){
 	//cout << "got: " << textLine << endl << flush;
@@ -39,6 +39,8 @@ Line::Line(string textLine){
 	this->nAutocarrosNecessarios = (int)((double)this->calcTempoIdaEVolta() / getFrequency() + 1.0);
 
 	cout << "\tNumero de autocarros necessarios: " << this->nAutocarrosNecessarios<<endl << endl;
+
+	this->gerarHorario(06*60, 23*60+30);
 }
 
 ////////////////
@@ -63,6 +65,11 @@ vector<int> Line::getTimings() const{
   return timesList;
 }
 
+vector<unsigned> Line::getHorario() const
+{
+	return this->horario;
+}
+
 void Line::print()
 {
 	cout << "==== " << this->id << " ====" << endl;
@@ -70,6 +77,18 @@ void Line::print()
 	cout << "--------|------------------" << endl;
 	for (unsigned int j = 0; j < this->getBusStops().size(); j++) {
 		cout << this->getTimings().at(j) << "\t| " << this->getBusStops().at(j) << endl;
+	}
+	return;
+}
+
+void Line::printTimeTable()
+{
+	cout << "==== " << this->id << " ====" << endl;
+	cout << "Horas de saida de " << this->getBusStops().at(0) << " (primeira paragem):" << endl;
+	for (unsigned int j = 0; j < this->getHorario().size(); j++) {
+		cout << "\t"; printTime(this->getHorario().at(j));
+		if(j!=0 && (j+1)%3==0)
+			cout << endl;
 	}
 	return;
 }
@@ -85,19 +104,17 @@ int Line::calcTempoIdaEVolta()
 	return res;
 }
 
-vector<time_dh> Line::gerarHorario(time_dh begin, time_dh end)
+void Line::gerarHorario(unsigned begin, unsigned end)
 {
-	vector<time_dh> res;
-	
-	time_dh curr=begin;
-	cout << "Quero gerar um horario para uma linha que comeca as " << begin << " e acaba as " << end << ".\n";
-	cout << "+freq=" << begin + time_dh(0, this->frequency) << endl;
-	/*while (curr < end) {
+	vector<unsigned> res;
+	cout << "Quero gerar um horario para uma linha que comeca as ";  printTime(begin); cout << " e acaba as "; printTime(end); cout << ".\n";
+	while (begin <= end) {
+		res.push_back(begin);
+		//cout << "A adicionar "; printTime(begin); cout << endl;
+		begin += this->frequency;
+	}
 
-	}*/
-
-
-	return res;
+	this->horario = res;
 }
 
 void Line::AlterLine(int id) {

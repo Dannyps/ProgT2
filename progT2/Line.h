@@ -3,8 +3,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "time_dh.h"
-
 
 
 using namespace std;
@@ -14,6 +12,7 @@ class Line{
   unsigned int id;
   vector<string> busStopList;
   vector<int> timesList;
+  vector<unsigned> horario; // Hora de partida de cada autocarro da primeira paragem
   unsigned int frequency;
   int nAutocarrosNecessarios=-1;
  public:
@@ -23,12 +22,14 @@ class Line{
   unsigned int getId() const;
   vector<string> getBusStops() const;
   vector<int> getTimings() const;
+  vector<unsigned> getHorario() const;
   // set methods
   void AlterLine(int id);
   // other methods
   void print();
+  void printTimeTable();
   int calcTempoIdaEVolta();
-  vector <time_dh> gerarHorario(time_dh begin, time_dh end);
+  void gerarHorario(unsigned begin, unsigned end);
 
   // Operators (for debugging)
   friend ostream& operator<< (ostream& os, const Line& d)

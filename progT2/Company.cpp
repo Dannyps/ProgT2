@@ -9,7 +9,8 @@ Empresa::Empresa(string nome, string fichCondutores, string fichLinhas) {
 
 	for each (Line l in linhas)
 	{
-		l.gerarHorario(time_dh(06,00), time_dh(23,30));
+		l.gerarHorario(6*60, 23*60+30);
+		cout << "O autocarro passa " << l.getHorario().size() << " vezes em qualquer paragem.\n";
 	}
 }
 
@@ -150,6 +151,36 @@ void Empresa::imprimeLinhas_m()
 	return;
 }
 
+void Empresa::mostraHorarioLinha_m()
+{
+	cout << "Linhas disponiveis: ";
+	for (unsigned int i = 0; i < linhas.size(); i++) {
+		cout << linhas[i].getId() << " ";
+	}
+	cout << endl;
+
+	cout << "Indique a linha a imprimir: ";
+	string opt;
+	cin >> opt;
+	cin.ignore(100, '\n');
+	if (!isdigit(opt[0])) {
+		cout << "Valor invalido!\n";
+		return;
+	}
+	else {
+		for (unsigned int i = 0; i < linhas.size(); i++) {
+			if (stoi(opt) == linhas[i].getId()) {
+				linhas[i].printTimeTable();
+				cout << endl;
+				return;
+			}
+		}
+	}
+
+	cout << "Linha nao encontrada!\n";
+	return;
+}
+
 void const Empresa::menu_interface(int mio)
 {
 	switch (mio) {
@@ -165,7 +196,12 @@ void const Empresa::menu_interface(int mio)
 	case LINE_EDIT:
 		AlterLines();
 		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
+		break;
+	case TIMETABLE_LINE_SHOW:
+		mostraHorarioLinha_m();
+		break;
 	}
+	
 		
 	return;
 }

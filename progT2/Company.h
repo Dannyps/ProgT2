@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -7,6 +6,7 @@
 #include <fstream>
 #include "Line.h"
 #include "Driver.h"
+
 
 
 enum mio // menu interface options
@@ -55,6 +55,7 @@ class Empresa{
 	void imprimeLinhas_m();
 	void imprimeCondutores_m();
 	void mostraHorarioLinha_m();
+	void mostraHorarioParagem_m();
 
 	// io methods
 	int saveChanges(string fichCondutores, string fichLinhas);

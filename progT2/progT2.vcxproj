@@ -27,6 +27,7 @@
     <ClInclude Include="Misc.h" />
     <ClInclude Include="Shift.h" />
     <ClInclude Include="time_dh.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bus.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Misc.cpp" />
     <ClCompile Include="Shift.cpp" />
     <ClCompile Include="time_dh.cpp" />
   </ItemGroup>

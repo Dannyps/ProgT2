@@ -1,4 +1,5 @@
 #include "Company.h"
+#include "misc.h"
 
 
 Empresa::Empresa(string nome, string fichCondutores, string fichLinhas) {
@@ -243,6 +244,27 @@ void Empresa::mostraHorarioLinha_m()
 	return;
 }
 
+void Empresa::mostraHorarioParagem_m()
+{
+	cout << "Indique a paragem a imprimir: ";
+	string opt;
+	getline(cin, opt);
+	//cin.ignore(100, '\n');
+	vector<Line> res = getLinesByStop(opt);
+	if(res.size()==0){
+		cout << "A paragem nao foi encontrada!\n";
+		return;
+	}
+	else {
+		for each (Line l in res)
+		{
+			l.printTimeTable(opt);
+		}
+
+	}
+	return;
+}
+
 void const Empresa::menu_interface(int mio)
 {
 	switch (mio) {
@@ -264,6 +286,9 @@ void const Empresa::menu_interface(int mio)
 		break;
 	case TIMETABLE_LINE_SHOW:
 		mostraHorarioLinha_m();
+		break;
+	case TIMETABLE_STOP_SHOW:
+		mostraHorarioParagem_m();
 		break;
 	case DRIVER_EDIT:
 		AlterDrivers();

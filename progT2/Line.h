@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cassert>
 
 
 using namespace std;
@@ -23,11 +24,15 @@ class Line{
   vector<string> getBusStops() const;
   vector<int> getTimings() const;
   vector<unsigned> getHorario() const;
+  int getStopOrder(string stop);
+  int getStopTime(string stop); // the time it takes for a bus that departs from beg to reach stop;
+
   // set methods
   void AlterLine(int id);
   // other methods
   void print();
   void printTimeTable();
+  void printTimeTable(string stop);
   int calcTempoIdaEVolta();
   void gerarHorario(unsigned begin, unsigned end);
 

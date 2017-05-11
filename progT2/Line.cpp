@@ -70,6 +70,32 @@ vector<unsigned> Line::getHorario() const
 	return this->horario;
 }
 
+int Line::getStopOrder(string stop)
+{
+	int a = 0;
+	for each (string s in this->busStopList)
+	{
+		if (s == stop)
+			return a;
+		a++;
+	}
+	assert(false); // this should never happen!
+	return -1;
+}
+
+int Line::getStopTime(string stop)
+{
+	int res = 0;
+	for(unsigned i=0;i<this->busStopList.size();i++)
+	{
+		res += this->timesList[i];
+		if (this->busStopList[i] == stop)
+			return res;
+	}
+	assert(false); // this should never happen!
+	return -1;
+}
+
 void Line::print()
 {
 	cout << "==== " << this->id << " ====" << endl;
@@ -93,12 +119,29 @@ void Line::printTimeTable()
 	return;
 }
 
+void Line::printTimeTable(string stop)
+{
+	cout << "Sentido: " << this->getId() << " - " << this->getBusStops().back() << " (ida)" << endl;
+	for (unsigned i = 0; i < this->getHorario().size(); i++) {
+		cout << "\t"; printTime(this->getHorario()[i] + this->getStopTime(stop));
+		if (i != 0 && (i + 1) % 4 == 0)
+			cout << endl;
+	}
+	cout << endl << endl;
+	cout << "Sentido: " << this->getId() << " - " << this->getBusStops().front() << " (volta)" << endl;
+	for (unsigned i = 0; i < this->getHorario().size(); i++) {
+		cout << "\t"; printTime(this->getHorario()[i] + 2 * this->getStopTime(this->busStopList.back()) - this->getStopTime(stop));
+		if (i != 0 && (i + 1) % 4 == 0)
+			cout << endl;
+	}
+	cout << endl << endl;
+}
+
 int Line::calcTempoIdaEVolta()
 {
 	int res = 0;
 	for (unsigned i = 0; i < this->busStopList.size(); i++) {
 		res += this->timesList.at(i) + this->timesList.at(i);
-		//cout << "a somar " << this->timesList.at(i) << endl;
 	}
 
 	return res;

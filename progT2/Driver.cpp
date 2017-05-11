@@ -45,9 +45,19 @@ vector<Shift> Driver::getShifts() const{
 
 void Driver::AlterIdCondutor(int NId) {
 	this->id = NId;
-
 }
-
+void Driver::AlterNameCondutor(string NNome) {
+	this->name = NNome;
+}
+void Driver::AlterHorasDiariasCondutor(int NHorasDiarias) {
+	this->maxHours = NHorasDiarias;
+}
+void Driver::AlterHorasSemanais(int NHSemanais) {
+	this->maxWeekWorkingTime = NHSemanais;
+}
+void Driver::AlterHorasDescanso(int NDescanso) {
+	this->minRestTime = NDescanso;
+}
 
 void Driver::print()
 {

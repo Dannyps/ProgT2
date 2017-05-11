@@ -28,6 +28,10 @@ class Driver{
 	unsigned int getMinRestTime() const;
 	vector<Shift> getShifts() const;
 	void AlterIdCondutor(int);
+	void AlterNameCondutor(string);
+	void AlterHorasDiariasCondutor(int);
+	void AlterHorasSemanais(int);
+	void AlterHorasDescanso(int);
 	// other methods
 
 	void print();

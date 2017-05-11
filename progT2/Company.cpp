@@ -180,6 +180,39 @@ void Empresa::imprimeLinhas_m()
 	return;
 }
 
+void Empresa::imprimeCondutores_m()
+{
+
+	cout << "Condutores disponiveis: ";
+	for (unsigned int i = 0; i < condutores.size(); i++) {
+		cout << condutores[i].getId() << " ";
+	}
+	cout << endl;
+
+	cout << "Indique o condutor a imprimir (* imprime todos os condutores): ";
+	string opt;
+	cin >> opt; cin.ignore(100, '\n');
+	if (opt == "*") {
+		for (unsigned int i = 0; i < condutores.size(); i++) {
+			condutores[i].print();
+			cout << endl;
+		}
+		return;
+	}
+	else {
+		for (unsigned int i = 0; i < condutores.size(); i++) {
+			if (condutores[i].getId() == stoi(opt)) {
+				condutores[i].print();
+				cout << endl;
+				return;
+			}
+		}
+	}
+
+	cout << "Condutor nao encontrado!\n";
+	return;
+}
+
 void Empresa::mostraHorarioLinha_m()
 {
 	cout << "Linhas disponiveis: ";
@@ -222,6 +255,9 @@ void const Empresa::menu_interface(int mio)
 	case LINE_SHOW:
 		imprimeLinhas_m();
 		break;
+	case DRIVER_SHOW:
+		imprimeCondutores_m();
+		break;
 	case LINE_EDIT:
 		AlterLines();
 		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
@@ -229,7 +265,12 @@ void const Empresa::menu_interface(int mio)
 	case TIMETABLE_LINE_SHOW:
 		mostraHorarioLinha_m();
 		break;
+	case DRIVER_EDIT:
+		AlterDrivers();
+		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
+		break;
 	}
+	
 	
 		
 	return;
@@ -303,6 +344,7 @@ int Empresa::loadFromDisk(string fichCondutores, string fichLinhas)
 		ifstream drivers;
 		string Sdrivers;
 		drivers.open(fichCondutores);
+		cout << drivers.good();
 		while (getline(drivers, Sdrivers))
 			condutores.push_back(Driver(Sdrivers));
 		drivers.close();

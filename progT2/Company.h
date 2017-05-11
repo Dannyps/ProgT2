@@ -53,6 +53,7 @@ class Empresa{
 
 	// menu interface methods
 	void imprimeLinhas_m();
+	void imprimeCondutores_m();
 	void mostraHorarioLinha_m();
 
 	// io methods

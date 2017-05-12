@@ -80,13 +80,14 @@ void Empresa::EraseLines() {									// falta por no menu
 	}
 	cout << "Tem a certeza que quer eliminar (s ou n)? ";
 	cin >> opcao;
-	while (opcao != 's' || opcao != 'n')
+	while (opcao != 's' && opcao != 'n')
 	{
 		cout << "\n" << "Carater nao permitido! use apenas 'n' ou 's' ";
 		cin >> opcao;
 	}
 	if (opcao == 's') {
 		linha->~Line();                              //voltar depois
+		cout << "Eliminada";
 		return;
 	}
 	cout << "Nao foi eliminda";
@@ -107,13 +108,14 @@ void Empresa::EraseDrivers() {									// falta por no menu
 	}
 	cout << "Tem a certeza que quer eliminar (s ou n)? ";
 	cin >> opcao;
-	while (opcao != 's' || opcao != 'n')
+	while (opcao != 's' && opcao != 'n')
 	{
 		cout << "\n" << "Carater nao permitido! use apenas 'n' ou 's' ";
 		cin >> opcao;
 	}
 	if (opcao == 's') {
-		condutor->~Driver();                              //voltar depois
+		condutor->~Driver();		//voltar depois
+		cout << "Eliminado";
 		return;
 	}
 	cout << "Nao foi elimindo";
@@ -345,6 +347,14 @@ void const Empresa::menu_interface(int mio)
 		break;
 	case DRIVER_EDIT:
 		AlterDrivers();
+		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
+		break;
+	case DRIVER_REMOVE:
+		EraseDrivers();
+		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
+		break;
+	case LINE_REMOVE:
+		EraseLines();
 		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
 		break;
 	}

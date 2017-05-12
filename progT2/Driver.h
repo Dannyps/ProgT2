@@ -32,6 +32,7 @@ class Driver{
 	void AlterHorasDiariasCondutor(int);
 	void AlterHorasSemanais(int);
 	void AlterHorasDescanso(int);
+	~Driver();
 	// other methods
 
 	void print();

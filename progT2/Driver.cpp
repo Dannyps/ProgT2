@@ -59,6 +59,9 @@ void Driver::AlterHorasDescanso(int NDescanso) {
 	this->minRestTime = NDescanso;
 }
 
+Driver::~Driver() {
+}
+
 void Driver::print()
 {
 	cout << setw(2) << this->id << ": " << this->name << endl;

@@ -42,3 +42,31 @@ bool ordenaTurnos(turno i, turno j) {
 	}else
 		return i.jasTime < j.jasTime;
 }
+
+string weekntostr(unsigned int day) {
+	string res;
+	switch (day) {
+	case MONDAY:
+		res = "segunda-feira";
+		break;
+	case TUESDAY:
+		res = "terca-feira";
+		break;
+	case WEDNESDAY:
+		res = "quarta-feira";
+		break;
+	case THURSDAY:
+		res = "quinta-feira";
+		break;
+	case FRIDAY:
+		res = "sexta-feira";
+		break;
+	case SATURDAY:
+		res = "sabado";
+		break;
+	case SUNDAY:
+		res = "domingo";
+		break;
+	}
+	return res;
+}

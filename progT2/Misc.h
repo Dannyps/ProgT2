@@ -13,3 +13,5 @@ pair<bool, string> getEnterOrString();
 inline int min(int a, int b);
 inline int min(int a, int b, int c);
 bool ordenaTurnos(turno i, turno j);
+
+string weekntostr(unsigned int day);

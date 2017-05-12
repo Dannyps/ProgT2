@@ -62,6 +62,7 @@ public:
 		return os;
 	}
 
-	// outher methods
+	// other methods
+	
 
 };

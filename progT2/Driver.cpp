@@ -71,9 +71,9 @@ Driver::~Driver() {
 
 void Driver::print() {
 	cout << setw(2) << this->id << ": " << this->name << endl;
-	cout << "\t Tempo maximo por semana: " << this->maxWeekWorkingTime << endl;
-	cout << "\t Tempo minimo de descanso: " << this->minRestTime << endl;
-	cout << "\t Tempo maximo por turno: " << this->maxHours << endl;
+	cout << "\t Tempo maximo por semana: " << this->maxWeekWorkingTime << " minutos." << endl;
+	cout << "\t Tempo minimo de descanso: " << this->minRestTime << " minutos." << endl;
+	cout << "\t Tempo maximo por turno: " << this->maxHours << " minutos." << endl;
 	return;
 }
 
@@ -101,3 +101,4 @@ void Driver::recalcTemps(unsigned time) {
 		acc_shift = 0;
 	}
 }
+

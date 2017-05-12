@@ -60,6 +60,7 @@ private:
 	string fichCondutores, fichLinhas;
 	vector<Driver> condutores;
 	vector<Line> linhas;
+	vector<turno> turnos;
 public:
 	Empresa(string nome, string fichCondutores, string fichLinhas);
 	// metodos get
@@ -84,6 +85,7 @@ public:
 	void mostraHorarioLinha_m();
 	void mostraHorarioParagem_m();
 	void mostraLinhasByParagem_m();
+	void mostraHorarioDeCondutor_m();
 
 	// io methods
 	int saveChanges(string fichCondutores, string fichLinhas);

@@ -47,8 +47,10 @@ vector<Line> Empresa::getLinesByStop(string Paragem) {
 
 
 void Empresa::distribuiServico() {
+	if (distrDone)
+		return;
 	// vamos arranjar primeiro uma lista com todos os turnos a preencher;
-	vector<turno> turnos;
+	//vector<turno> turnos;
 	cout << endl;
 	unsigned int day = MONDAY;
 	while (day != SATURDAY) {
@@ -76,21 +78,21 @@ void Empresa::distribuiServico() {
 
 	int yy = 0;
 	for (unsigned i = 0; i < turnos.size(); i++) {
-		turno t = turnos[i];
+		turno* t = &turnos[i];
 		for (unsigned j=0;j<condutores.size();j++){
 			Driver *d = &condutores[j];
-			//cout << "Pode " << d->getName() << " conduzir " << t.line->getId() << "?\n";
-			//cout << "Pode conduzir " << d->getTSATW(t.jasTime) << "minutos. A linha demora " << t.duration << ".\n";
+			/*cout << "Pode " << d->getName() << " conduzir " << t->line->getId() << "?\n";
+			cout << "Pode conduzir " << d->getTSATW(t->jasTime) << "minutos. A linha demora " << t->duration << ".\n";*/
 			yy++;
-			if (!d->isWorking(t.jasTime) && t.duration < d->getTSATW(t.jasTime)) {// se o condutor puder conduzir o tempo necessário para o turno
-				t.driver = d;
-				d->acc_shift += t.duration;
-				d->acc_week += t.duration;
-				d->next_drop = t.jasTime + t.duration;
+			if (!d->isWorking(t->jasTime) && t->duration < d->getTSATW(t->jasTime)) {// se o condutor puder conduzir o tempo necessário para o turno
+				t->driver = d;
+				d->acc_shift += t->duration;
+				d->acc_week += t->duration;
+				d->next_drop = t->jasTime + t->duration;
 				break;
 			}
 		}
-		cout << t << endl;
+		//cout << *t << endl;
 	}
 	distrDone = 1;
 }
@@ -319,6 +321,30 @@ void Empresa::mostraLinhasByParagem_m() {
 	return;
 }
 
+void Empresa::mostraHorarioDeCondutor_m() {
+	cout << "Indique o numero do condutor a procurar: ";
+	string opt;
+	getline(cin, opt);
+	//cin.ignore(100, '\n');
+	Driver* d = getDriverByID(stoi(opt));
+	cout << d->getName() << endl;
+	int wd = -1;
+	for each(turno t in turnos) {
+		if (t.driver == d) {
+			//if (wd == -1) {
+			//	wd = t.wDay;
+			//}
+			if (wd != t.wDay) {
+				cout << endl << weekntostr(t.wDay) << endl;
+				wd = t.wDay;
+			}
+			cout << "\t"; printTime(t.jasTime); cout << "\t Linha: " << t.line->getId() << "\tLocalizacao: " << t.line->getBusStops().front() << endl;
+		}
+	}
+
+	return;
+}
+
 void const Empresa::menu_interface(int mio) {
 	switch (mio) {
 	case SAVE_ALL:
@@ -353,10 +379,11 @@ void const Empresa::menu_interface(int mio) {
 	case STOP_GET_LINES:
 		mostraLinhasByParagem_m();
 		break;
+	case TIMETABLE_DRIVER_SHOW:
+		mostraHorarioDeCondutor_m();
+		break;
 
 	}
-
-
 
 	return;
 }

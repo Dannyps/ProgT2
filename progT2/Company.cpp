@@ -66,6 +66,59 @@ Driver * Empresa::getDriverByID(unsigned id)
 	}
 	return nullptr;
 }
+void Empresa::EraseLines() {									// falta por no menu
+	char opcao;
+	cout << "Qual o ID da linha? ";
+
+	unsigned int id;
+	cin >> id;
+	Line* linha = getLineByID(id);
+	if (linha == nullptr)
+	{
+		cout << "Esse id nao corresponde a nenhuma linha.";
+		return;
+	}
+	cout << "Tem a certeza que quer eliminar (s ou n)? ";
+	cin >> opcao;
+	while (opcao != 's' || opcao != 'n')
+	{
+		cout << "\n" << "Carater nao permitido! use apenas 'n' ou 's' ";
+		cin >> opcao;
+	}
+	if (opcao == 's') {
+		linha->~Line();                              //voltar depois
+		return;
+	}
+	cout << "Nao foi eliminda";
+	return;
+}
+
+void Empresa::EraseDrivers() {									// falta por no menu
+	char opcao;
+	cout << "Qual o ID do condutor? ";
+
+	unsigned int id;
+	cin >> id;
+	Driver* condutor = getDriverByID(id);
+	if (condutor == nullptr)
+	{
+		cout << "Esse id nao corresponde a nenhum condutor.";
+		return;
+	}
+	cout << "Tem a certeza que quer eliminar (s ou n)? ";
+	cin >> opcao;
+	while (opcao != 's' || opcao != 'n')
+	{
+		cout << "\n" << "Carater nao permitido! use apenas 'n' ou 's' ";
+		cin >> opcao;
+	}
+	if (opcao == 's') {
+		condutor->~Driver();                              //voltar depois
+		return;
+	}
+	cout << "Nao foi elimindo";
+	return;
+}
 
 void Empresa::AlterLines() {
 	cout << "Qual o ID da linha? ";
@@ -107,9 +160,9 @@ void Empresa::AlterDrivers() {
 		cout << "Esse ID ja existe!";
 		return;
 	}
-	cout << "Qual o novo nome [" << getNome() << "]? " ;
+	cout << "Qual o novo nome [" << condutor->getName() << "]? " ;
 	cin >> NNome;
-	
+	// Nao sei como e que se poe para tambem reconhecer o enter
 	                                                   
 	cout << "Qual o numero de horas que pode trabalhar por dia? ";
 	cin >> NHorasDiarias;

@@ -50,6 +50,8 @@ class Empresa{
 
 	void AlterDrivers();
 	void AlterLines();
+	void EraseLines();
+	void EraseDrivers();
 
 	// menu interface methods
 	void imprimeLinhas_m();

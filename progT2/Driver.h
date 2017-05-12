@@ -40,11 +40,20 @@ public:
 	// temp distr vars/methods
 
 	int acc_shift = 0;
-	int begin_rest = 0;
+	int begin_last_rest = -1;
 	int acc_week = 0;
+	int next_drop = 0;
 
 	// Get time still avaiable to work
-	int getTSATW() const;
+	int getTSATW(unsigned time);
+
+	// Get if is working
+	int isWorking(unsigned time) const;
+
+	// recalculate acc_shift
+
+	void recalcTemps(unsigned time);
+
 
 	// Operators (for debugging)
 	friend ostream& operator<< (ostream& os, const Driver& d)

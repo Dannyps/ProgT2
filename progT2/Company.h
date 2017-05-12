@@ -9,6 +9,7 @@
 
 
 
+
 enum mio // menu interface options
 {
 	SAVE_ALL,
@@ -50,6 +51,8 @@ typedef struct {
 	unsigned int jasTime;
 } turno;
 
+ostream & operator<<(ostream &os, turno t);
+
 class Empresa {
 private:
 
@@ -80,6 +83,7 @@ public:
 	void imprimeCondutores_m();
 	void mostraHorarioLinha_m();
 	void mostraHorarioParagem_m();
+	void mostraLinhasByParagem_m();
 
 	// io methods
 	int saveChanges(string fichCondutores, string fichLinhas);
@@ -87,5 +91,8 @@ public:
 
 	// menu interface
 	void const menu_interface(int mio);
+
+	//misc
+	bool distrDone = 0;
 
 };

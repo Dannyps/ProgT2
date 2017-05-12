@@ -28,7 +28,7 @@ int main() {
 	Menu* menu_gerirparagens = menu.addOption("Gerir Paragens", '4', NULL);
 
 
-	menu.addOption("Distribuir Serviço", 'd', mi, MAKE_DRIVERS_SHIFTS);
+	menu.addOption("Distribuir Servico", 'd', mi, MAKE_DRIVERS_SHIFTS);
 	menu.addOption("Gravar Alteracoes", 's', mi, SAVE_ALL);
 	menu.addOption("Recarregar do disco", 'r', mi, LOAD_FROM_DISK);
 

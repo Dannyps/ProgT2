@@ -21,3 +21,24 @@ pair<bool, string> getEnterOrString() {
 		return res;
 	}
 }
+
+inline int min(int a, int b) {
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+inline int min(int a, int b, int c) {
+	int min = a;
+	(min > b) && (min = b);
+	(min > c) && (min = c);
+	return min;
+}
+
+bool ordenaTurnos(turno i, turno j) {
+	if (i.busNumber < j.busNumber) {
+		return false;
+	}else
+		return i.jasTime < j.jasTime;
+}

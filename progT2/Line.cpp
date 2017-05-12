@@ -2,7 +2,7 @@
 #include <sstream>
 #include "Misc.h"
 
-Line::Line(string textLine){
+Line::Line(string textLine) {
 	//cout << "got: " << textLine << endl << flush;
 	size_t inicio = 0, fim = 0;
 	char sep;
@@ -36,11 +36,11 @@ Line::Line(string textLine){
 
 	cout << this->id << ":\n\tTempo de ida e volta: " << calcTempoIdaEVolta() << endl;
 
-	this->nAutocarrosNecessarios = (int)((double)this->calcTempoIdaEVolta() / getFrequency() + 1.0);
+	this->nAutocarrosNecessarios = (int) ((double)this->calcTempoIdaEVolta() / getFrequency() + 1.0);
 
-	cout << "\tNumero de autocarros necessarios: " << this->nAutocarrosNecessarios<<endl << endl;
+	cout << "\tNumero de autocarros necessarios: " << this->nAutocarrosNecessarios << endl << endl;
 
-	this->gerarHorario(06*60, 23*60+30);
+	this->gerarHorario(06 * 60, 23 * 60 + 30);
 }
 
 ////////////////
@@ -48,33 +48,33 @@ Line::Line(string textLine){
 ////////////////
 
 
-unsigned int Line::getFrequency()
-{
+unsigned int Line::getFrequency() {
 	return this->frequency;
 }
 
-unsigned int Line::getId() const{
-  return id;
+unsigned int Line::getId() const {
+	return id;
 }
 
-vector<string> Line::getBusStops() const{
-  return busStopList;
+vector<string> Line::getBusStops() const {
+	return busStopList;
 }
 
-vector<int> Line::getTimings() const{
-  return timesList;
+vector<int> Line::getTimings() const {
+	return timesList;
 }
 
-vector<unsigned> Line::getHorario() const
-{
+vector<unsigned> Line::getHorario() const {
 	return this->horario;
 }
 
-int Line::getStopOrder(string stop)
-{
+int Line::getNumberBuses() const {
+	return nAutocarrosNecessarios;
+}
+
+int Line::getStopOrder(string stop) {
 	int a = 0;
-	for each (string s in this->busStopList)
-	{
+	for each (string s in this->busStopList) {
 		if (s == stop)
 			return a;
 		a++;
@@ -83,11 +83,9 @@ int Line::getStopOrder(string stop)
 	return -1;
 }
 
-int Line::getStopTime(string stop)
-{
+int Line::getStopTime(string stop) {
 	int res = 0;
-	for(unsigned i=0;i<this->busStopList.size();i++)
-	{
+	for (unsigned i = 0; i < this->busStopList.size(); i++) {
 		res += this->timesList[i];
 		if (this->busStopList[i] == stop)
 			return res;
@@ -96,8 +94,7 @@ int Line::getStopTime(string stop)
 	return -1;
 }
 
-void Line::print()
-{
+void Line::print() {
 	cout << "==== " << this->id << " ====" << endl;
 	cout << "Tempo \t| Nome" << endl;
 	cout << "--------|------------------" << endl;
@@ -107,20 +104,18 @@ void Line::print()
 	return;
 }
 
-void Line::printTimeTable()
-{
+void Line::printTimeTable() {
 	cout << "==== " << this->id << " ====" << endl;
 	cout << "Horas de saida de " << this->getBusStops().at(0) << " (primeira paragem):" << endl;
 	for (unsigned int j = 0; j < this->getHorario().size(); j++) {
 		cout << "\t"; printTime(this->getHorario().at(j));
-		if(j!=0 && (j+1)%3==0)
+		if (j != 0 && (j + 1) % 3 == 0)
 			cout << endl;
 	}
 	return;
 }
 
-void Line::printTimeTable(string stop)
-{
+void Line::printTimeTable(string stop) {
 	cout << "Sentido: " << this->getId() << " - " << this->getBusStops().back() << " (ida)" << endl;
 	for (unsigned i = 0; i < this->getHorario().size(); i++) {
 		cout << "\t"; printTime(this->getHorario()[i] + this->getStopTime(stop));
@@ -137,8 +132,7 @@ void Line::printTimeTable(string stop)
 	cout << endl << endl;
 }
 
-int Line::calcTempoIdaEVolta()
-{
+int Line::calcTempoIdaEVolta() {
 	int res = 0;
 	for (unsigned i = 0; i < this->busStopList.size(); i++) {
 		res += this->timesList.at(i) + this->timesList.at(i);
@@ -147,8 +141,7 @@ int Line::calcTempoIdaEVolta()
 	return res;
 }
 
-void Line::gerarHorario(unsigned begin, unsigned end)
-{
+void Line::gerarHorario(unsigned begin, unsigned end) {
 	vector<unsigned> res;
 	cout << "Quero gerar um horario para uma linha que comeca as ";  printTime(begin); cout << " e acaba as "; printTime(end); cout << ".\n";
 	while (begin <= end) {

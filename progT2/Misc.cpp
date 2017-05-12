@@ -1,13 +1,11 @@
 #include "Misc.h"
 
-void printTime(unsigned t)
-{
+void printTime(unsigned t) {
 	cout << setfill('0') << setw(2) << t / 60 % 24 << ":";
 	cout << setfill('0') << setw(2) << t % 60;
 }
 
-pair<bool, string> getEnterOrString()
-{
+pair<bool, string> getEnterOrString() {
 	pair<bool, string> res;
 	char c;
 	c = getchar();

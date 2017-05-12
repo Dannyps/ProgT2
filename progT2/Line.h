@@ -24,6 +24,7 @@ class Line{
   vector<string> getBusStops() const;
   vector<int> getTimings() const;
   vector<unsigned> getHorario() const;
+  int getNumberBuses() const;
   int getStopOrder(string stop);
   int getStopTime(string stop); // the time it takes for a bus that departs from beg to reach stop;
 

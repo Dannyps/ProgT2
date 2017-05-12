@@ -10,15 +10,15 @@
 
 using namespace std;
 
-class Driver{
- private:
+class Driver {
+private:
 	unsigned int id;
 	string name;
 	unsigned int maxHours;        // maximum duration of a shift
 	unsigned int maxWeekWorkingTime;  // maximum number of hours of work in a week
 	unsigned int minRestTime;     // minimum number of rest hours between shifts
 	vector<Shift> shifts;         // assigned shifts
- public:
+public:
 	Driver(string textLine);
 	// get methods
 	unsigned int getId() const;
@@ -37,9 +37,15 @@ class Driver{
 
 	void print();
 
+	// temp distr vars/methods
 
-	
-	
+	int acc_shift = 0;
+	int begin_rest = 0;
+	int acc_week = 0;
+
+	// Get time still avaiable to work
+	int getTSATW() const;
+
 	// Operators (for debugging)
 	friend ostream& operator<< (ostream& os, const Driver& d)
 	{
@@ -47,6 +53,6 @@ class Driver{
 		return os;
 	}
 
-  // outher methods
+	// outher methods
 
 };

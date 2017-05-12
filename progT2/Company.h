@@ -23,20 +23,42 @@ enum mio // menu interface options
 	DRIVER_REMOVE,
 	TIMETABLE_LINE_SHOW,
 	TIMETABLE_STOP_SHOW,
-	TIMETABLE_DRIVER_SHOW
+	TIMETABLE_DRIVER_SHOW,
+	STOP_GET_LINES,
+	MAKE_DRIVERS_SHIFTS
 };
+
+enum weekday {
+	MONDAY = 0,
+	TUESDAY,
+	WEDNESDAY,
+	THURSDAY,
+	FRIDAY,
+	SATURDAY,
+	SUNDAY
+};
+
 
 using namespace std;
 
-class Empresa{
- private:
+typedef struct {
+	unsigned short duration;
+	Line* line;
+	unsigned short busNumber;
+	unsigned short wDay;
+	Driver* driver;
+	unsigned int jasTime;
+} turno;
+
+class Empresa {
+private:
 
 	string nome;
 	string fichCondutores, fichLinhas;
 	vector<Driver> condutores;
 	vector<Line> linhas;
- public:
-		Empresa(string nome, string fichCondutores, string fichLinhas);
+public:
+	Empresa(string nome, string fichCondutores, string fichLinhas);
 	// metodos get
 	string getNome() const;
 	Line& getLineById(unsigned int id);

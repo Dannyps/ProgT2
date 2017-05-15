@@ -77,8 +77,6 @@ public:
 
 	void AlterDrivers();
 	void AlterLines();
-	void EraseLines();
-	void EraseDrivers();
 
 	template<class T>
 	inline int encontraNumeroDisponivel(T arg);

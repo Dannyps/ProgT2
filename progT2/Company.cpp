@@ -137,6 +137,7 @@ void Empresa::AlterLines() {
 
 void Empresa::AlterDrivers() {
 	int id, NId, NHorasDiarias, NHorasSemanais, NHorasPausa;
+	pair<int, string> temp;
 	string NNome;
 	cout << "Qual o Id do condutor que quer alterar? ";
 	cin >> id;
@@ -145,15 +146,26 @@ void Empresa::AlterDrivers() {
 		cout << "Esse id nao corresponde a nenhum condutor.";
 		return;
 	}
-	cout << "Qual o novo Id? ";
-	cin >> NId;
-	if (getDriverByID(NId) != nullptr) {
-		cout << "Esse ID ja existe!";
-		return;
+	temp = getEnterOrString();
+	if (!temp.first) {
+		NId = stoi(temp.second);
+		if (getDriverByID(NId) != nullptr) {
+			cout << "Esse ID ja existe!";
+			return;
+		}
 	}
-	cout << "Qual o novo nome [" << getNome() << "]? ";
-	cin >> NNome;
-
+	else {
+		NId = condutor->getId();
+	}
+	
+	cout << "Qual o novo nome [" << condutor->getName() << "]? ";
+	temp = getEnterOrString();
+	if (!temp.first) {
+		NNome = temp.second;
+	}
+	else {
+		NNome = condutor->getName();
+	}
 
 	cout << "Qual o numero de horas que pode trabalhar por dia? ";
 	cin >> NHorasDiarias;
@@ -175,9 +187,9 @@ void Empresa::AlterDrivers() {
 	}
 	condutor->AlterIdCondutor(NId);
 	condutor->AlterNameCondutor(NNome);
-	condutor->AlterHorasDiariasCondutor(NHorasDiarias);
-	condutor->AlterHorasSemanais(NHorasSemanais);
-	condutor->AlterHorasDescanso(NHorasPausa);
+	condutor->AlterHorasDiariasCondutor(NHorasDiarias*60);
+	condutor->AlterHorasSemanais(NHorasSemanais*60);
+	condutor->AlterHorasDescanso(NHorasPausa*60);
 	return;
 }
 
@@ -281,6 +293,7 @@ void Empresa::removerLinha_m() {
 	Line* lin = getLineByID(n);
 	if (lin == NULL) {
 		cout << "A linha especificada nao foi encontrada!\n";
+		cin.ignore(100, '\n');
 		return;
 	}
 	cout << "Esta' prestes a apagar a seguinte linha:\n";
@@ -308,6 +321,7 @@ void Empresa::removerCondutor_m() {
 	Driver* cond = getDriverByID(n);
 	if (cond == NULL) {
 		cout << "O condutor especificado nao foi encontrado!\n";
+		cin.ignore(100, '\n');
 		return;
 	}
 	cout << "Esta' prestes a apagar o seguinte condutor:\n";
@@ -464,6 +478,10 @@ void Empresa::mostraLinhasByParagem_m() {
 }
 
 void Empresa::mostraHorarioDeCondutor_m() {
+	if (!distrDone) {
+		cout << "Os turnos ainda nao foram distribuidos!" << endl;
+		return;
+	}
 	cout << "Indique o numero do condutor a procurar: ";
 	string opt;
 	getline(cin, opt);
@@ -488,6 +506,10 @@ void Empresa::mostraHorarioDeCondutor_m() {
 }
 
 void Empresa::mostraHorarioSemCondutor_m() {
+	if (!distrDone) {
+		cout << "Os turnos ainda nao foram distribuidos!" << endl;
+		return;
+	}
 	cout << "Turnos sem condutores: " << endl;
 	int wd = -1;
 	for each(turno t in turnos) {

@@ -48,6 +48,7 @@ int main() {
 	menu_gerirhorarios->addOption("Ver horario por linha", 'l', mi, TIMETABLE_LINE_SHOW);
 	menu_gerirhorarios->addOption("Ver horario por paragem", 'p', mi, TIMETABLE_STOP_SHOW);
 	menu_gerirhorarios->addOption("Ver horario por condutor", 'c', mi, TIMETABLE_DRIVER_SHOW);
+	menu_gerirhorarios->addOption("Ver turnos sem condutor", 'f', mi, TIMETABLE_NO_DRIVER_SHOW);
 
 	menu_gerirparagens->addOption("Ver linhas que passam em", '1', mi, STOP_GET_LINES);
 

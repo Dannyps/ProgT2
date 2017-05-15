@@ -186,6 +186,148 @@ void Empresa::AlterDrivers() {
 // outros metodos
 ///////////////////////////
 
+void Empresa::adicionarLinha_m() {
+	vector<string> stopnames;
+	vector<int> times;
+	unsigned short numero, freq;
+	cout << "Insira o numero da nova linha.\n(0 gera um numero automaticamente): ";
+	cin >> numero;
+	if (numero <= 0) {
+		numero = encontraNumeroDisponivel(linhas);
+	}
+	else if (getLineByID(numero) != NULL) {
+		cerr << "O numero especificado ja' existe!\n";
+		return;
+	}
+	cout << "Numero a adicionar: " << numero << endl;
+	cout << "Insira a frequencia da nova linha: ";
+	cin >> freq;
+
+	if (cin.fail()) {
+		cout << "Ocorreu um erro de leitura.\n";
+		cin.clear();
+		return;
+	}
+	cin.ignore(100, '\n');
+	for (unsigned int i = 0;; i++) {
+		cout << "Insira o nome da paragem " << i << " (Ctrl+Z termina): ";
+		string stopname; unsigned short tempo;
+		if (!getline(cin, stopname)) {
+			break;
+		}
+		if (i == 0) {
+			cout << "Tempo de viagem da primeira paragem introduzido automaticamente: 0.\n";
+			tempo = 0;
+		}
+		else {
+			cout << "Insira o tempo de viagem para esta paragem: ";
+			cin >> tempo;
+			getchar(); //remove ENTER from buffer
+		}
+		stopnames.push_back(stopname);
+		times.push_back(tempo);
+		cout << endl;
+	}
+
+	//Leitura concluída.
+	string temp;
+	for each (string str in stopnames) {
+		temp += " ; " + str;
+	}
+	for each (int n in times) {
+		temp += " ; " + to_string(n);
+	}
+
+	linhas.push_back(Line(to_string(numero) + " ; " + to_string(freq) + temp));
+
+	cout << "Linha adicionada com sucesso!\n";
+	cin.clear();
+}
+
+void Empresa::adicionarCondutor_m() {
+	unsigned short numero, nMHT, nMHS, nMHD;
+	cout << "Insira o numero do novo condutor.\n(0 gera um numero automaticamente): ";
+	cin >> numero;
+	if (numero <= 0) {
+		numero = encontraNumeroDisponivel(condutores);
+	}
+	else if (getDriverByID(numero) != NULL) {
+		cerr << "O numero especificado ja' existe!\n";
+		return;
+	}
+	cout << "Numero a adicionar: " << numero << endl;
+	cout << "Insira o nome do novo condutor: ";
+	string nome;
+	getchar(); getline(cin, nome);
+	cout << "Insira o numero de horas consecutivas por dia (turno): ";
+	cin >> nMHT;
+	cout << "Insira o numero de horas maximo por semana: ";
+	cin >> nMHS;
+	cout << "Insira o numero de horas minimo de descanso: ";
+	cin >> nMHD;
+
+	//Leitura concluída.
+
+	condutores.push_back(Driver(to_string(numero) + " ; " + nome + " ; " + to_string(nMHT) + " ; " + to_string(nMHS) + " ; " + to_string(nMHD)));
+
+	cout << "Condutor adicionado com sucesso!\n";
+	cin.ignore(100, '\n');
+}
+
+void Empresa::removerLinha_m() {
+	cout << "Indique o numero da linha a remover: ";
+	unsigned short n;
+	cin >> n;
+	Line* lin = getLineByID(n);
+	if (lin == NULL) {
+		cout << "A linha especificada nao foi encontrada!\n";
+		return;
+	}
+	cout << "Esta' prestes a apagar a seguinte linha:\n";
+	cout << *lin;
+	cout << "\nConfirme (S/N) ";
+	char conf;
+	cin >> conf; cin.ignore(100, '\n');
+	if (conf == 'S' || conf == 's') {
+		for (unsigned int i = 0; i < linhas.size(); i++) {
+			if (&linhas[i] == lin) {
+				linhas.erase(linhas.begin() + i);
+			}
+		}
+		cout << "Linha removida.\n";
+	}
+	else {
+		cout << "Linha nao removida.\n";
+	}
+}
+
+void Empresa::removerCondutor_m() {
+	cout << "Indique o numero do condutor a remover: ";
+	unsigned short n;
+	cin >> n;
+	Driver* cond = getDriverByID(n);
+	if (cond == NULL) {
+		cout << "O condutor especificado nao foi encontrado!\n";
+		return;
+	}
+	cout << "Esta' prestes a apagar o seguinte condutor:\n";
+	cout << *cond;
+	cout << "\nConfirme (S/N) ";
+	char conf;
+	cin >> conf; cin.ignore(100, '\n');
+	if (conf == 'S' || conf == 's') {
+		for (unsigned int i = 0; i < condutores.size(); i++) {
+			if (&condutores[i] == cond) {
+				condutores.erase(condutores.begin() + i);
+			}
+		}
+		cout << "Condutor removido.\n";
+	}
+	else {
+		cout << "Condutor nao removido.\n";
+	}
+}
+
 void Empresa::imprimeLinhas_m() {
 	cout << "Linhas disponiveis: ";
 	for (unsigned int i = 0; i < linhas.size(); i++) {
@@ -345,6 +487,22 @@ void Empresa::mostraHorarioDeCondutor_m() {
 	return;
 }
 
+void Empresa::mostraHorarioSemCondutor_m() {
+	cout << "Turnos sem condutores: " << endl;
+	int wd = -1;
+	for each(turno t in turnos) {
+		if (t.driver == NULL) {
+			if (wd != t.wDay) {
+				cout << endl << weekntostr(t.wDay) << endl;
+				wd = t.wDay;
+			}
+			cout << "\t"; printTime(t.jasTime); cout << "\t Linha: " << t.line->getId() << "\tLocalizacao: " << t.line->getBusStops().front() << endl;
+		}
+	}
+
+	return;
+}
+
 void const Empresa::menu_interface(int mio) {
 	switch (mio) {
 	case SAVE_ALL:
@@ -382,13 +540,27 @@ void const Empresa::menu_interface(int mio) {
 	case TIMETABLE_DRIVER_SHOW:
 		mostraHorarioDeCondutor_m();
 		break;
-
+	case TIMETABLE_NO_DRIVER_SHOW:
+		mostraHorarioSemCondutor_m();
+		break;
+	case LINE_ADD:
+		adicionarLinha_m();
+		break;
+	case DRIVER_ADD:
+		adicionarCondutor_m();
+		break;
+	case LINE_REMOVE:
+		removerLinha_m();
+		break;
+	case DRIVER_REMOVE:
+		removerCondutor_m();
+		break;
 	}
 
 	return;
 }
 
-
+/*
 Line & Empresa::getLineById(unsigned int id) {
 	for (unsigned i = 0; this->linhas.size(); i++) {
 		if (this->linhas.at(i).getId() == id) {
@@ -397,7 +569,7 @@ Line & Empresa::getLineById(unsigned int id) {
 	}
 
 	throw - 1;
-}
+}*/
 
 int Empresa::saveChanges(string fichCondutores, string fichLinhas) {
 	ofstream file(fichLinhas);

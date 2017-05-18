@@ -1,9 +1,9 @@
-1 ; Antonio Manuel ; 4 ; 36 ; 2
-2 ; Daniel Silva ; 8 ; 48 ; 4
-3 ; Joaquim Belmiro ; 8 ; 48 ; 4
-4 ; Rodrigues Azevedo ; 8 ; 48 ; 4
-5 ; Malaquias Betessaia ; 8 ; 48 ; 4
-6 ; Nabucodonosor Sousa ; 8 ; 48 ; 4
-7 ; Zacarias dos Santos ; 8 ; 70 ; 1
-8 ; Sedraque Abedenego ; 8 ; 48 ; 4
-9 ; Mezaque Maria ; 8 ; 48 ; 4
+1 ; Antonio Manuel ; 240 ; 2160 ; 120
+2 ; Daniel Silva ; 480 ; 2880 ; 240
+3 ; Joaquim Belmiro ; 480 ; 2880 ; 240
+4 ; Rodrigues Azevedo ; 480 ; 2880 ; 240
+5 ; Malaquias Betessaia ; 480 ; 2880 ; 240
+6 ; Nabucodonosor Sousa ; 480 ; 2880 ; 240
+7 ; Zacarias dos Santos ; 480 ; 4200 ; 60
+8 ; Sedraque Abedenego ; 480 ; 2880 ; 240
+9 ; Mezaque Maria ; 480 ; 2880 ; 240

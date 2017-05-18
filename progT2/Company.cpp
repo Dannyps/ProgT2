@@ -336,6 +336,8 @@ void Empresa::removerCondutor_m() {
 			}
 		}
 		cout << "Condutor removido.\n";
+		distrDone = false;
+		cout << "E' necessaria (nova) distribuicao de sevico!\n";
 	}
 	else {
 		cout << "Condutor nao removido.\n";
@@ -511,8 +513,10 @@ void Empresa::mostraHorarioSemCondutor_m() {
 		return;
 	}
 	cout << "Turnos sem condutores: " << endl;
+	vector<turno> temp = turnos;
+	sort(temp.begin(), temp.end(), ordenaTurnos2);
 	int wd = -1;
-	for each(turno t in turnos) {
+	for each(turno t in temp) {
 		if (t.driver == NULL) {
 			if (wd != t.wDay) {
 				cout << endl << weekntostr(t.wDay) << endl;
@@ -551,7 +555,9 @@ void const Empresa::menu_interface(int mio) {
 		break;
 	case DRIVER_EDIT:
 		AlterDrivers();
+		distrDone = 0;
 		cin.clear(); cin.ignore(1000, '\n'); //clear buffer
+		cout << "E' necessaria (nova) distribuicao de sevico!\n";
 		break;
 	case MAKE_DRIVERS_SHIFTS:
 		distribuiServico();
@@ -595,7 +601,7 @@ Line & Empresa::getLineById(unsigned int id) {
 
 int Empresa::saveChanges(string fichCondutores, string fichLinhas) {
 	ofstream file(fichLinhas);
-	cout << "Aberto para escrita: " << fichLinhas << ". " << file.good() << endl;
+	//cout << "Aberto para escrita: " << fichLinhas << ". " << file.good() << endl;
 	for (unsigned int i = 0; i < linhas.size(); i++) {
 		Line cur = linhas[i];
 		file << cur.getId() << " ; " << cur.getFrequency() << " ; ";
@@ -624,9 +630,9 @@ int Empresa::saveChanges(string fichCondutores, string fichLinhas) {
 	ofstream file2(fichCondutores);
 	for (unsigned int i = 0; i < condutores.size(); i++) {
 		Driver cur = condutores.at(i);
-		file << cur.getId() << " ; " << cur.getName() << " ; " << cur.getShiftMaxDuration() << " ; " << cur.getMaxWeekWorkingTime() << " ; " << cur.getMinRestTime();
+		file2 << cur.getId() << " ; " << cur.getName() << " ; " << cur.getShiftMaxDuration()/60 << " ; " << cur.getMaxWeekWorkingTime()/60 << " ; " << cur.getMinRestTime()/60;
 		if (i + 1 != condutores.size())
-			file << endl;
+			file2 << endl;
 	}
 
 	file2.close();

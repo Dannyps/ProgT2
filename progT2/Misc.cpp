@@ -39,8 +39,17 @@ inline int min(int a, int b, int c) {
 bool ordenaTurnos(turno i, turno j) {
 	if (i.busNumber < j.busNumber) {
 		return false;
-	}else
+	}
+	else
 		return i.jasTime < j.jasTime;
+}
+
+bool ordenaTurnos2(turno i, turno j) {
+	if (i.wDay >= j.wDay) {
+		return false;
+	}
+	else
+		return true;
 }
 
 string weekntostr(unsigned int day) {

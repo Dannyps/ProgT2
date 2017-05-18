@@ -108,7 +108,7 @@ void Line::printTimeTable() {
 	cout << "==== " << this->id << " ====" << endl;
 	cout << "Horas de saida de " << this->getBusStops().at(0) << " (primeira paragem):" << endl;
 	for (unsigned int j = 0; j < this->getHorario().size(); j++) {
-		cout << "\t"; printTime(this->getHorario().at(j));
+		cout << "\t " << j+1 << ": " ; printTime(this->getHorario().at(j));
 		if (j != 0 && (j + 1) % 3 == 0)
 			cout << endl;
 	}
